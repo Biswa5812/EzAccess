@@ -10,4 +10,4 @@ Hence introducing **EzAccess** a simple automated project to take care of your o
 > - **Pyautogui:** For triggering some events on a web application,  lets Python control the mouse and keyboard, and other GUI automation tasks.
 > - **Python:**  Python is an interpreted, high-level, general-purpose programming language. 
 
-👉 **NOTE: This application is only enabled to run in chrome browser and requires mandatory installtion of ZOOM desktop application in the local system for smooth functioning**
+> 👉 **NOTE: This application is only enabled to run in chrome browser and requires mandatory installtion of ZOOM desktop application in the local system for smooth functioning**
