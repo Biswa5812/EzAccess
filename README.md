@@ -1,5 +1,5 @@
 # EzAccess 👨‍💻
->This project aims in solving out a local problem faced by students at my college, as online classes are taking over our curriculum and the process to launch a class stands quite redundant. Logging into the student account then searching for the correct class link, this process becomes quite cumbersome to be done for each class.
+>This project aims in solving out a local problem faced by students at my college, as online classes are taking over our curriculum and the process to launch a zoom class stands quite redundant. Logging into the student account then searching for the correct class link, this process becomes quite cumbersome to be done for each class.
 So, why don't we sit back and let python take over the task of repeating the process!!!
 
 Hence introducing **EzAccess** a simple automated project to take care of your online classes.
@@ -10,6 +10,15 @@ Hence introducing **EzAccess** a simple automated project to take care of your o
 > - **Pyautogui:** For triggering some events on a web application,  lets Python control the mouse and keyboard, and other GUI automation tasks.
 > - **Python:**  Python is an interpreted, high-level, general-purpose programming language. 
 
+## 👉 Some points to note:
 
+> * For Glearn authentication, enter your credentials in the username and password element i.e. lines 21 and 22.
+> * This application was designed to run in Chrome browser only.
+> * Make sure that you have Zoom desktop application installed in your system.
+> * Make sure that your system satisfies all the pre-reqs before using the script.
 
-👉 **NOTE: This application is only enabled to run in chrome browser and requires mandatory installtion of ZOOM desktop application in the local system for smooth functioning**
+## Python package requirements:
+> * Selenium - `pip install selenium`
+> * WebDriver-Manager - `pip install webdriver-manager`
+> * DateTime - `pip install DateTime`
+> * PyAuto GUI - `pip install pyautogui`
