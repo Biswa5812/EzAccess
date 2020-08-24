@@ -34,7 +34,7 @@ rows = browser.find_elements_by_xpath("//*[@id='ContentPlaceHolder1_GridViewonli
 for i in range(len(rows)):
     x_path = "//*[@id='ContentPlaceHolder1_GridViewonline']/tbody/tr[{}]/td/a/div/h6".format(i+1)
     row_content = browser.find_element_by_xpath(x_path).text
-    print(row_content)
+    #Fetching today's date and time
     test = row_content
     test_1 = list(test.split())
     date = list(test_1[2].split("-"))[0]
@@ -54,6 +54,7 @@ for i in range(len(rows)):
         c_min = '0' + str(t.tm_min)
     else:
         c_min = t.tm_min
+    #Comparing the current time with the session time 
     c_time = int(str(c_hr)+str(c_min))  
     if ((((s_time-c_time)-40)<45) and s_time-c_time>-15 ) and today==date:
         zoom_link = '//*[@id="ContentPlaceHolder1_GridViewonline"]/tbody/tr[{}]/td/a/div'.format(i+1)
@@ -61,7 +62,8 @@ for i in range(len(rows)):
         time.sleep(5)
         pyautogui.click(1050, 290)
         time.sleep(1)
-        # browser.quit()
+        print("Successfully joined the session")
+        browser.quit()
         c +=1
         break
 if(c==0):
