@@ -46,17 +46,20 @@ for i in range(len(rows)):
     for j in list(end.split(":")):
         t_com.append(j)
     s_time = int(t_com[0]+t_com[1][0:2])
+    noon = t_com[1][2::] 
     if t.tm_hour>12:
         c_hr = t.tm_hour - 12
+        c_noon = 'PM'
     else:
         c_hr = t.tm_hour
+        c_noon = 'AM'
     if t.tm_min<10:
         c_min = '0' + str(t.tm_min)
     else:
         c_min = t.tm_min
     #Comparing the current time with the session time 
     c_time = int(str(c_hr)+str(c_min))  
-    if ((((s_time-c_time)-40)<45) and s_time-c_time>-15 ) and today==date:
+    if ((((s_time-c_time)-40)<45) and s_time-c_time>-15 ) and today==date and noon==c_noon:
         zoom_link = '//*[@id="ContentPlaceHolder1_GridViewonline"]/tbody/tr[{}]/td/a/div'.format(i+1)
         browser.find_element_by_xpath(zoom_link).click()
         time.sleep(5)
