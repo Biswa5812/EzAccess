@@ -24,12 +24,9 @@ browser.find_element_by_name('password').send_keys('ENTER G_LEARN PASSWORD')
 browser.find_element_by_xpath("//input[@id='Submit']").click()
 
 # Opening g-learn
-browser.find_element_by_xpath("//*[@id='MainContent_studentg']/div[11]/a/h5").click()
+browser.find_element_by_xpath('//*[@id="form1"]/div[4]/ul/li[1]/a').click()
 
-# changing driver window
-browser.switch_to.window(browser.window_handles[1])
-
-# launching zoom
+# Finding the session and launching zoom
 rows = browser.find_elements_by_xpath("//*[@id='ContentPlaceHolder1_GridViewonline']/tbody/tr")
 for i in range(len(rows)):
     x_path = "//*[@id='ContentPlaceHolder1_GridViewonline']/tbody/tr[{}]/td/a/div/h6".format(i+1)
