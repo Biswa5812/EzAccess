@@ -7,7 +7,7 @@ import pyautogui
 
 # loading system date
 t = time.localtime()
-c=0
+c = 0
 today = date.today()
 today = str(today)
 today = int(today[8::])
@@ -15,11 +15,11 @@ browser = webdriver.Chrome(ChromeDriverManager().install())
 browser.maximize_window()
 
 # activating browser
-browser.get('https://login.gitam.edu/Login.aspx')
+browser.get("https://login.gitam.edu/Login.aspx")
 
 # fetching credentials
-browser.find_element_by_name('txtusername').send_keys('ENTER YOUR ROLL NUMBER')
-browser.find_element_by_name('password').send_keys('ENTER G_LEARN PASSWORD')
+browser.find_element_by_name("txtusername").send_keys("ENTER YOUR ROLL NUMBER")
+browser.find_element_by_name("password").send_keys("ENTER G_LEARN PASSWORD")
 
 browser.find_element_by_xpath("//input[@id='Submit']").click()
 
@@ -27,46 +27,55 @@ browser.find_element_by_xpath("//input[@id='Submit']").click()
 browser.find_element_by_xpath('//*[@id="form1"]/div[4]/ul/li[1]/a').click()
 
 # Finding the session and launching zoom
-rows = browser.find_elements_by_xpath("//*[@id='ContentPlaceHolder1_GridViewonline']/tbody/tr")
+rows = browser.find_elements_by_xpath(
+    "//*[@id='ContentPlaceHolder1_GridViewonline']/tbody/tr"
+)
 for i in range(len(rows)):
-    x_path = "//*[@id='ContentPlaceHolder1_GridViewonline']/tbody/tr[{}]/td/a/div/h6".format(i+1)
+    x_path = "//*[@id='ContentPlaceHolder1_GridViewonline']/tbody/tr[{}]/td/a/div/h6".format(
+        i + 1
+    )
     row_content = browser.find_element_by_xpath(x_path).text
-    #Fetching today's date and time
+    # Fetching today's date and time
     test = row_content
     test_1 = list(test.split())
     date = list(test_1[2].split("-"))[0]
     date = int(date)
     start = test_1[4]
     end = test_1[6]
-    t_com =  list(start.split(":"))[1:3]
-   
+    t_com = list(start.split(":"))[1:3]
+
     for j in list(end.split(":")):
         t_com.append(j)
-    s_time = int(t_com[0]+t_com[1][0:2])
-    noon = t_com[1][2::] 
-    if t.tm_hour>12:
+    s_time = int(t_com[0] + t_com[1][0:2])
+    noon = t_com[1][2::]
+    if t.tm_hour > 12:
         c_hr = t.tm_hour - 12
-        c_noon = 'PM'
+        c_noon = "PM"
     else:
         c_hr = t.tm_hour
-        c_noon = 'AM'
-    if t.tm_min<10:
-        c_min = '0' + str(t.tm_min)
+        c_noon = "AM"
+    if t.tm_min < 10:
+        c_min = "0" + str(t.tm_min)
     else:
         c_min = t.tm_min
-    #Comparing the current time with the session time 
-    c_time = int(str(c_hr)+str(c_min))  
-    if ((((s_time-c_time)-40)<45) and s_time-c_time>-15 ) and today==date and noon==c_noon:
-        zoom_link = '//*[@id="ContentPlaceHolder1_GridViewonline"]/tbody/tr[{}]/td/a/div'.format(i+1)
+    # Comparing the current time with the session time
+    c_time = int(str(c_hr) + str(c_min))
+    if (
+        ((((s_time - c_time) - 40) < 45) and s_time - c_time > -15)
+        and today == date
+        and noon == c_noon
+    ):
+        zoom_link = '//*[@id="ContentPlaceHolder1_GridViewonline"]/tbody/tr[{}]/td/a/div'.format(
+            i + 1
+        )
         browser.find_element_by_xpath(zoom_link).click()
         time.sleep(5)
-        pyautogui.click(1050, 290)
+        pyautogui.click("Capture.PNG")
         time.sleep(1)
         print("Successfully joined the session")
         browser.quit()
-        c +=1
+        c += 1
         break
-if(c==0):
+if c == 0:
     print("NO SESSION FOUND")
     browser.quit()
-        
