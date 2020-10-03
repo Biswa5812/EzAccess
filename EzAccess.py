@@ -1,9 +1,17 @@
 # importing libraries
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 import time
 from datetime import date
 import pyautogui
+
+# script setup
+roll_no = 'ENTER YOUR ROLL NUMBER'
+password = 'ENTER G_LEARN PASSWORD'
+browser_type = 'FIREFOX'
+# available browser_type = 'CHROME','EDGE','FIREFOX'
 
 # loading system date
 t = time.localtime()
@@ -11,7 +19,13 @@ c=0
 today = date.today()
 today = str(today)
 today = int(today[8::])
-browser = webdriver.Chrome(ChromeDriverManager().install())
+if (browser_type == 'EDGE'):
+    browser = webdriver.Edge(EdgeChromiumDriverManager().install())
+elif(browser_type == 'FIREFOX'):
+    browser = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+else:
+    browser = webdriver.Chrome(ChromeDriverManager().install())
+
 browser.maximize_window()
 
 # activating browser

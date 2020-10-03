@@ -25,7 +25,7 @@ Hence introducing **EzAccess** a simple automated project to take care of your o
 
 ## How to use
 > - Zip the repository and download it in your local system.
-> - Make sure that the system has python pre-insytalled, in case you don't have python **[Click Here]** to download and install the latest python version.
+> - Make sure that the system has python pre-installed, in case you don't have python **[Click Here]** to download and install the latest python version.
 > - Open command prompt and type ``` python --version ``` to check whether the latest version is installed or not.
 > - Extract the downloaded zip folder of **EzAccess** and navigate inside this folder.
 > - Open cmd at this particular path and write ```  pip install -r requirements.txt ```.
